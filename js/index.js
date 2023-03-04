@@ -117,8 +117,6 @@ document.getElementById('btn-show').addEventListener('click', function(){
     document.getElementById('btn-show').classList.add('hidden')
 })
 
-loadAiData()
-
 const loadSortedData = () => {
     fetch('https://openapi.programming-hero.com/api/ai/tools')
     .then(res => res.json())
@@ -144,25 +142,5 @@ const loadSortedData = () => {
 })
 
 }
-// document.getElementById('btn-show').addEventListener('click', function(){
-//     progressBar(true)
-//     fetch('https://openapi.programming-hero.com/api/ai/tools')
-//     .then(res => res.json())
-//     .then(data => loadSortedData(data.data.tools))
-//     document.getElementById('btn-show').classList.add('hidden')
-// })
+loadAiData();
   
-  
-
-// const item = date.find(item => new Date(item.date).getTime() === date.getTime());
-//             console.log(item)
-// displayAiData(item)
-
-// const dates = (data.data.tools).map(item => new Date(item.published_in))
-//         dates.sort((a, b) => a - b);
-//         console.log(dates)
-//         dates.forEach(date => {
-//             console.log(date)
-            
-//         })
-
