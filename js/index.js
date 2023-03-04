@@ -119,17 +119,3 @@ function progressBar(isLoading){
 
 loadAiData()
 
-// const loadSortedData = () => {
-//     fetch('https://openapi.programming-hero.com/api/ai/tools')
-//     .then(res => res.json())
-//     .then(data => {
-//         const dates = data.data.tools.map(item => new Date(item.published_in))
-//         dates.sort((a, b) => a - b);
-//         dates.forEach(date => {
-//             // console.log(date)
-//             const item = data.find(item => new Date(item.date).getTime() === date.getTime());
-//             console.log(item)
-//         })
-//         // displayAiData(item)
-//     })
-// }
