@@ -131,10 +131,8 @@ const loadSortedData = () => {
             }
             return 0;
           });
-          
-          console.log(data);
           displayAiData(data.data.tools);
-        
+        document.getElementById('btn-show').classList.add('hidden');
     })
     
 }
