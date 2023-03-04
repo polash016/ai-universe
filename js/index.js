@@ -10,7 +10,6 @@ const loadAiData = () => {
 
 const displayAiData = (allAi) => {
     console.log(allAi)
-    
         const cardContainer = document.getElementById('card-container');
         cardContainer.innerText ='';
         allAi.forEach(ai => {
@@ -63,16 +62,16 @@ const showModalData = (id) => {
     document.getElementById('description').innerText = `${id.description}`
     document.getElementById('cost').innerHTML = `
     <div class="bg-stone-50 rounded-lg p-3 font-bold text-green-500">
-        <p>${id.pricing[0].price ? id.pricing[0].price : 'Free of Cost'}</p>
-        <p>${id.pricing[0].plan}</p>
+        <p>${id.pricing? id.pricing[0].price : 'Free of Cost'}</p>
+        <p>${id.pricing? id.pricing[0].plan : 'Basic'}</p>
     </div>
     <div class="bg-stone-50 rounded-lg p-3 font-bold text-orange-500">
-        <p>${id.pricing[1].price? id.pricing[1].price : 'Free of Cost'}</p>
-        <p>${id.pricing[1].plan}</p>
+        <p>${id.pricing? id.pricing[1].price : 'Free of Cost'}</p>
+        <p>${id.pricing? id.pricing[1].plan : 'Pro'}</p>
     </div>
     <div class="bg-stone-50 rounded-lg p-3 font-bold text-red-500 mr-8">
-        <p>${id.pricing[2].price? id.pricing[2].price : 'Free of Cost'}</p>
-        <p>${id.pricing[2].plan}</p>
+        <p>${id.pricing? id.pricing[2].price : 'Free of Cost'}</p>
+        <p>${id.pricing? id.pricing[2].plan : 'Enterprise'}</p>
     </div>
     `
     document.getElementById('features').innerHTML = `
@@ -89,7 +88,7 @@ const showModalData = (id) => {
 <div>
 <p class="text-2xl font-semibold">Integrations</p>
 <ul class="list-disc font-light pb-8">
-${(id.integrations).map(data => (`<li>${data}</li>`)).join("")}
+${id.integrations ? id.integrations.map(data => (`<li>${data}</li>`)).join("") : 'No data Found'}
 </ul>
 </div>
     `
@@ -100,8 +99,8 @@ ${(id.integrations).map(data => (`<li>${data}</li>`)).join("")}
     <button id="btn-accuracy" class="btn btn-xs absolute right-10 top-8">Accuracy ${id.accuracy.score? id.accuracy.score : ''}</button>
     </div>
     <div class="text-center mt-4">
-    <h2 class="text-2xl font-semibold mb-4">${id.input_output_examples[0].input}</h2>
-    <p>${id.input_output_examples[0].output? id.input_output_examples[0].output : 'No! Not Yet! Take a Break!!!'}</p>
+    <h2 class="text-2xl font-semibold mb-4">${id.input_output_examples? id.input_output_examples[0].input : 'Can You Give any Example?'}</h2>
+    <p>${id.input_output_examples? id.input_output_examples[0].output : 'No! Not Yet! Take a Break!!!'}</p>
     </div>
     `
 
@@ -139,6 +138,13 @@ const loadSortedData = () => {
     })
     
 }
+// document.getElementById('btn-show').addEventListener('click', function(){
+//     progressBar(true)
+//     fetch('https://openapi.programming-hero.com/api/ai/tools')
+//     .then(res => res.json())
+//     .then(data => loadSortedData(data.data.tools))
+//     document.getElementById('btn-show').classList.add('hidden')
+// })
   
   
 
@@ -153,3 +159,4 @@ const loadSortedData = () => {
 //             console.log(date)
             
 //         })
+
