@@ -58,7 +58,64 @@ const loadModalData = (id) => {
     .then(data => showModalData(data.data))
 }
 
+const showModalData = (id) => {
+    console.log(id)
+    document.getElementById('description').innerText = `${id.description}`
+    document.getElementById('cost').innerHTML = `
+    <div class="bg-stone-50 rounded-lg p-3 font-bold text-green-500">
+        <p>${id.pricing[0].price ? id.pricing[0].price : 'Free of Cost'}</p>
+        <p>${id.pricing[0].plan}</p>
+    </div>
+    <div class="bg-stone-50 rounded-lg p-3 font-bold text-orange-500">
+        <p>${id.pricing[1].price? id.pricing[1].price : 'Free of Cost'}</p>
+        <p>${id.pricing[1].plan}</p>
+    </div>
+    <div class="bg-stone-50 rounded-lg p-3 font-bold text-red-500 mr-8">
+        <p>${id.pricing[2].price? id.pricing[2].price : 'Free of Cost'}</p>
+        <p>${id.pricing[2].plan}</p>
+    </div>
+    `
+    document.getElementById('features').innerHTML = `
+    <div>
+    <p class="text-2xl font-semibold pb-3">Features</p>
+    <ul class="list-disc font-light pb-8">
+    <li>${id.features[1].feature_name}</li>
+    <li>${id.features[2].feature_name}</li>
+    <li>${id.features[3].feature_name}</li>
+    </ul>
+</div>
 
+
+<div>
+<p class="text-2xl font-semibold">Integrations</p>
+<ul class="list-disc font-light pb-8">
+${(id.integrations).map(data => (`<li>${data}</li>`)).join("")}
+</ul>
+</div>
+    `
+    
+    document.getElementById('right-modal-container').innerHTML = `
+    <div>
+    <img src="${id.image_link[0]}"></img>
+    <button id="btn-accuracy" class="btn btn-xs absolute right-10 top-8">Accuracy ${id.accuracy.score? id.accuracy.score : ''}</button>
+    </div>
+    <div class="text-center mt-4">
+    <h2 class="text-2xl font-semibold mb-4">${id.input_output_examples[0].input}</h2>
+    <p>${id.input_output_examples[0].output? id.input_output_examples[0].output : 'No! Not Yet! Take a Break!!!'}</p>
+    </div>
+    `
+
+}
+
+function progressBar(isLoading){
+    const progress = document.getElementById('progress');
+    if(isLoading){
+        progress.classList.remove('hidden');
+    }
+    else{
+        progress.classList.add('hidden');
+    };
+};
 
 loadAiData()
 
