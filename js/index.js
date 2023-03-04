@@ -28,7 +28,7 @@ const displayAiData = (allAi) => {
                  <span>${ai.published_in}</span>
             </div>
             <div>
-            <label onclick="loadModalData('${ai.id}')" for="my-modal-3"><i class="fa-solid fa-arrow-right"></i></label>
+            <label onclick="loadModalData('${ai.id}')" for="my-modal-5"><i class="fa-solid fa-arrow-right"></i></label>
             </div>
           </div>
           <div class="card-actions justify-start">
@@ -42,13 +42,7 @@ const displayAiData = (allAi) => {
         progressBar(false)
 
 }
-document.getElementById('btn-show').addEventListener('click', function(){
-    progressBar(true)
-    fetch('https://openapi.programming-hero.com/api/ai/tools')
-    .then(res => res.json())
-    .then(data => displayAiData(data.data.tools))
-    document.getElementById('btn-show').classList.add('hidden')
-})
+
 
 const loadModalData = (id) => {
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
@@ -115,6 +109,13 @@ function progressBar(isLoading){
         progress.classList.add('hidden');
     };
 };
+document.getElementById('btn-show').addEventListener('click', function(){
+    progressBar(true)
+    fetch('https://openapi.programming-hero.com/api/ai/tools')
+    .then(res => res.json())
+    .then(data => displayAiData(data.data.tools))
+    document.getElementById('btn-show').classList.add('hidden')
+})
 
 loadAiData()
 
@@ -123,18 +124,25 @@ const loadSortedData = () => {
     .then(res => res.json())
     .then(data => {
         data.data.tools.sort((a, b) => {
-            if (a.published_in < b.published_in) {
-              return -1;
-            }
-            if (a.published_in > b.published_in) {
-              return 1;
-            }
-            return 0;
+
+        const dateA = new Date(a.published_in);
+        const dateB = new Date(b.published_in);
+        
+        if (dateA < dateB) {
+            return -1;
+          }
+          if (dateA > dateB) {
+            return 1;
+          }
+          return 0;
           });
+          
+          console.log(data);
           displayAiData(data.data.tools);
-        document.getElementById('btn-show').classList.add('hidden');
-    })
-    
+      
+          document.getElementById('btn-show').classList.add('hidden');
+})
+
 }
 // document.getElementById('btn-show').addEventListener('click', function(){
 //     progressBar(true)
