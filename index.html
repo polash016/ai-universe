@@ -6,40 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/6ca58a24c0.js" crossorigin="anonymous"></script>
 </head>
 <body class="w-[95%] mx-auto">
     <header class="mt-4">
         <h1 class="text-4xl font-semibold text-center">AI Universe Hub</h1>
     </header>
+    <section>
+       
+    </section>
 
     <!-- card section start-->
     <section>
-        <div class="grid grid-cols-3">
-            <div class="card w-96 bg-base-100 shadow-xl mt-12">
-                <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                <div class="card-body">
-                  <h2 class="card-title">Shoes!</h2>
-                  <ul class="list-disc">
-                    <li>Lorem ipsum dolor sit amet consectetur.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur.</li>
-                  </ul> <hr class="border">
-                  <div class="flex justify-between">
-                    <div>
-                        <h2 class="card-title">ChatGPT</h2>
-                        <p>12/12/2023</p>
-                    </div>
-                    <div>
-                        <p>icon</p>
-                    </div>
-                  </div>
-                  <p>If a dog chews shoes whose shoes does he choose?</p>
-                  <div class="card-actions justify-start">
-                    
-                  </div>
-                </div>
-                <!-- <label for="my-modal-3" class="btn mx-auto mb-2">open modal</label> -->
-              </div>
+        <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            
         </div>
     </section>
     <!-- card secton end -->
@@ -50,15 +30,55 @@
 
 
 
-<!-- Put this part before </body> tag -->
+
 <input type="checkbox" id="my-modal-3" class="modal-toggle" />
 <div class="modal">
-  <div class="modal-box relative">
-    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+  <div class="modal-box h-5/6 w-11/12 max-w-3xl">
+    <label for="my-modal-3" class="btn btn-xs btn-circle absolute right-2 top-2">✕</label>
+
+    <div class="md:flex gap-4 ">
+        <div class="bg-red-50 rounded-sm">
+            <!-- description in left side -->
+            <div class=" w-[90%] mx-auto">
+                <h2 id="description"></h2>
+            </div>
+            <div id="cost" class="mt-8 flex items-center gap-2 mx-auto w-[90%] mx-auto">
+                
+            </div>
+            <div id="features" class="mt-8 flex gap-4 mx-auto w-[90%] mx-auto">
+                <div>
+
+                </div>
+                <div id="integrations">
+                    <p class="text-2xl font-semibold">Integrations</p>
+                    
+                    </div>
+            </div>
+        </div>
+        <div id="right-modal-container">
+            <!-- pics in right side -->
+            <div id="img">
+
+            </div>
+            <div id="img-description" class="mt-8">
+                
+            </div>
+        </div>
+    </div>
+    <!-- <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
+    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p> -->
   </div>
 </div>
+<!-- progress -->
+<div id="progress" class="mt-8 mb-8 text-center hidden">
+    <progress class="progress w-56"></progress>
+</div>
+
+<div id="btn-show" class="text-center m-4">
+    <button class="btn btn-accent">Show More</button>
+</div>
+ 
+
 
 
 
@@ -66,3 +86,17 @@
     <script src="js/index.js"></script>
 </body>
 </html>
+
+
+
+
+
+<!-- id.integrations.forEach(single => {
+        console.log(single)
+        document.getElementById('features').innerHTML += `
+        
+        <ul class="list-disc font-light pb-8">
+        <li>${single? single : 'No Data Found'}</li>
+    </ul>
+        `
+    }) -->
