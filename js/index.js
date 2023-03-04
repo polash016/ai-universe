@@ -1,3 +1,4 @@
+
 const loadAiData = () => {
     fetch('https://openapi.programming-hero.com/api/ai/tools')
     .then(res => res.json())
@@ -5,6 +6,7 @@ const loadAiData = () => {
 }
 
 const displayAiData = (allAi) => {
+    console.log(allAi)
         const cardContainer = document.getElementById('card-container');
         cardContainer.innerText ='';
         allAi.forEach(ai => {
@@ -46,6 +48,28 @@ document.getElementById('btn-show').addEventListener('click', function(){
     document.getElementById('btn-show').classList.add('hidden')
 })
 
+const loadModalData = (id) => {
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+    progressBar(true)
+    fetch(url)
+    .then(res => res.json())
+    .then(data => showModalData(data.data))
+}
 
 
 loadAiData()
+
+// const loadSortedData = () => {
+//     fetch('https://openapi.programming-hero.com/api/ai/tools')
+//     .then(res => res.json())
+//     .then(data => {
+//         const dates = data.data.tools.map(item => new Date(item.published_in))
+//         dates.sort((a, b) => a - b);
+//         dates.forEach(date => {
+//             // console.log(date)
+//             const item = data.find(item => new Date(item.date).getTime() === date.getTime());
+//             console.log(item)
+//         })
+//         // displayAiData(item)
+//     })
+// }
