@@ -55,15 +55,15 @@ const showModalData = (id) => {
     document.getElementById('description').innerText = `${id.description}`
     document.getElementById('cost').innerHTML = `
     <div class="bg-stone-50 rounded-lg p-3 font-bold text-green-500">
-        <p>${id.pricing? id.pricing[0].price : 'Free of Cost'}</p>
+        <p>${id.pricing? id.pricing[0].price : 'Free of Cost/'}</p>
         <p>${id.pricing? id.pricing[0].plan : 'Basic'}</p>
     </div>
     <div class="bg-stone-50 rounded-lg p-3 font-bold text-orange-500">
-        <p>${id.pricing? id.pricing[1].price : 'Free of Cost'}</p>
+        <p>${id.pricing? id.pricing[1].price : 'Free of Cost/'}</p>
         <p>${id.pricing? id.pricing[1].plan : 'Pro'}</p>
     </div>
     <div class="bg-stone-50 rounded-lg p-3 font-bold text-red-500 mr-8">
-        <p>${id.pricing? id.pricing[2].price : 'Free of Cost'}</p>
+        <p>${id.pricing? id.pricing[2].price : 'Free of Cost/'}</p>
         <p>${id.pricing? id.pricing[2].plan : 'Enterprise'}</p>
     </div>
     `
