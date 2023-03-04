@@ -2,11 +2,15 @@
 const loadAiData = () => {
     fetch('https://openapi.programming-hero.com/api/ai/tools')
     .then(res => res.json())
-    .then(data => displayAiData(data.data.tools.slice(0, 6)))
+    .then(data => {
+        displayAiData(data.data.tools.slice(0, 6))
+    
+    })
 }
 
 const displayAiData = (allAi) => {
     console.log(allAi)
+    
         const cardContainer = document.getElementById('card-container');
         cardContainer.innerText ='';
         allAi.forEach(ai => {
@@ -16,9 +20,8 @@ const displayAiData = (allAi) => {
         <div class="card-body">
           <h2 class="card-title">Features</h2>
           <ul class="list-decimal pb-3">
-            <li>${ai.features[0]}</li>
-            <li>${ai.features[1]}</li>
-            <li>${ai?.features[2]}</li>
+          ${(ai.features).map(feature => (`<li>${feature}</li>`)).join("")}
+            
           </ul> <hr class="border">
           <div class="flex justify-between items-center">
             <div>
@@ -50,11 +53,11 @@ document.getElementById('btn-show').addEventListener('click', function(){
 
 const loadModalData = (id) => {
     const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
-    progressBar(true)
     fetch(url)
     .then(res => res.json())
     .then(data => showModalData(data.data))
 }
+
 
 
 loadAiData()
