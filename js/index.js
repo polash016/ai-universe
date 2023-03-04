@@ -9,7 +9,6 @@ const loadAiData = () => {
 }
 
 const displayAiData = (allAi) => {
-    console.log(allAi)
         const cardContainer = document.getElementById('card-container');
         cardContainer.innerText ='';
         allAi.forEach(ai => {
@@ -41,7 +40,7 @@ const displayAiData = (allAi) => {
         });
         progressBar(false)
 
-}
+};
 
 
 const loadModalData = (id) => {
@@ -78,7 +77,6 @@ const showModalData = (id) => {
     </ul>
 </div>
 
-
 <div>
 <p class="text-2xl font-semibold">Integrations</p>
 <ul class="list-disc font-light pb-8">
@@ -86,7 +84,6 @@ ${id.integrations ? id.integrations.map(data => (`<li>${data}</li>`)).join("") :
 </ul>
 </div>
     `
-    
     document.getElementById('right-modal-container').innerHTML = `
     <div>
     <img src="${id.image_link[0]}"></img>
@@ -97,8 +94,7 @@ ${id.integrations ? id.integrations.map(data => (`<li>${data}</li>`)).join("") :
     <p>${id.input_output_examples? id.input_output_examples[0].output : 'No! Not Yet! Take a Break!!!'}</p>
     </div>
     `
-
-}
+};
 
 function progressBar(isLoading){
     const progress = document.getElementById('progress');
@@ -110,19 +106,18 @@ function progressBar(isLoading){
     };
 };
 document.getElementById('btn-show').addEventListener('click', function(){
-    progressBar(true)
+    progressBar(true);
     fetch('https://openapi.programming-hero.com/api/ai/tools')
     .then(res => res.json())
     .then(data => displayAiData(data.data.tools))
-    document.getElementById('btn-show').classList.add('hidden')
+    document.getElementById('btn-show').classList.add('hidden');
 })
 
 const loadSortedData = () => {
     fetch('https://openapi.programming-hero.com/api/ai/tools')
     .then(res => res.json())
     .then(data => {
-        data.data.tools.sort((a, b) => {
-
+        (data.data.tools).sort((a, b) => {
         const dateA = new Date(a.published_in);
         const dateB = new Date(b.published_in);
         
@@ -139,8 +134,9 @@ const loadSortedData = () => {
           displayAiData(data.data.tools);
       
           document.getElementById('btn-show').classList.add('hidden');
-})
+});
 
-}
+};
+
 loadAiData();
   
