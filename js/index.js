@@ -24,7 +24,7 @@ const displayAiData = (allAi) => {
           <div class="flex justify-between items-center">
             <div>
                 <h2 class="card-title">${ai.name}</h2>
-                 <span>${ai.published_in}</span>
+                <i class="fa-solid fa-calendar-days"> </i> <span>${ai.published_in}</span>
             </div>
             <div>
             <label onclick="loadModalData('${ai.id}')" for="my-modal-5"><i class="fa-solid fa-arrow-right"></i></label>
@@ -51,7 +51,6 @@ const loadModalData = (id) => {
 }
 
 const showModalData = (id) => {
-    console.log(id)
     document.getElementById('description').innerText = `${id.description}`
     document.getElementById('cost').innerHTML = `
     <div class="bg-stone-50 rounded-lg p-3 font-bold text-green-500">
@@ -129,8 +128,6 @@ const loadSortedData = () => {
           }
           return 0;
           });
-          
-          console.log(data);
           displayAiData(data.data.tools);
       
           document.getElementById('btn-show').classList.add('hidden');
